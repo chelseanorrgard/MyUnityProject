@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer _characterBody;
     [SerializeField] private float _movementSpeed;
     private Rigidbody2D _rb;
+    private bool isDead = false; // Track if player is dead
 
     void Start()
     {
@@ -16,7 +17,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandlePlayerMovement();
+        if (!isDead) // Allow movement only if not dead
+        {
+            HandlePlayerMovement();
+        }
+
+        // Toggle death mode when pressing "K"
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (!isDead)
+            {
+                Die();
+            }
+            else
+            {
+                Revive();
+            }
+        }
     }
 
     private void HandlePlayerMovement()
@@ -31,5 +48,18 @@ public class PlayerController : MonoBehaviour
 
         bool flipSprite = movement.x < 0f;
         _characterBody.flipX = flipSprite;
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        _animator.SetTrigger("Die"); // Use the trigger to transition to PlayerDie
+        _rb.velocity = Vector2.zero; // Stop movement
+    }
+
+    private void Revive()
+    {
+        isDead = false;
+        _animator.Play("PlayerIdle"); // Reset animation manually
     }
 }

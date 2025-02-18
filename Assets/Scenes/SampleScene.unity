@@ -152,7 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9126612a3797e0b41a0e689f69e46ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  _animator: {fileID: 2114664722}
+  _characterBody: {fileID: 2114664721}
+  _movementSpeed: 1
 --- !u!50 &519272764
 Rigidbody2D:
   serializedVersion: 4
@@ -489,7 +491,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2009601862, guid: d8fdb445769f77c4daaeb2ac28b0e389, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
